@@ -1,6 +1,7 @@
 extends Node
 
-signal _change_detection_completed()
+# gdlint: ignore=signal-name
+signal _change_detection_completed
 
 const Util = preload("./util.gd")
 

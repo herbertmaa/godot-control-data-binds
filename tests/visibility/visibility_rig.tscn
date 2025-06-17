@@ -31,7 +31,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="BoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(574, 648)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="VpVisibilityRigContent" parent="BoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_r3pvu")]

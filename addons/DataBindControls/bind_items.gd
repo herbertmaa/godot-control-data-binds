@@ -144,35 +144,121 @@ func detect_changes(new_array := []) -> bool:
 	while size < it.get_item_count():
 		change_detected = true
 		it.remove_item(it.get_item_count() - 1)
-
-	for i in range(size):
-		change_detected = _assign_item(it, i, new_array[i]) || change_detected
+	var orig_sel_idx: int
 	var parent = get_parent()
-	if selected_item && "selected" in parent:
+	if "selected" in parent:
+		orig_sel_idx = parent.selected
+	elif parent.has_method("select"):
+		var si = parent.get_selected_items()
+		orig_sel_idx = si[0] if len(si) else -1
+	for i in range(size):
+		change_detected = _update_from_item(it, i, new_array[i]) || change_detected
+	# assume that if parent has the 'select' method they
+	# also have 'get_selected_items()' and 'deselect_all()'
+	if selected_item && ("selected" in parent || parent.has_method("select")):
 		var bt := _bound_selected_item
 		var target = bt.get_target()
 		if target:
-			var item = new_array[parent.selected] if parent.selected >= 0 else null
-			var model_item = bt.get_value(target)
-			if !_equal_approx(model_item, item):
-				var idx = new_array.find(model_item)
-				parent.selected = idx
-				var new_item = new_array[idx] if idx >= 0 else null
-				bt.set_value(target, new_item)
-				model_item = bt.get_value(target)
-				if _equal_approx(new_item, model_item):
+			var sel_idx: int
+			if "selected" in parent:
+				sel_idx = parent.selected
+			else:
+				var si = parent.get_selected_items()
+				sel_idx = si[0] if len(si) else -1
+				assert(len(si) < 2, "MultiSelect is not supported with selected_item binding")
+			# selection changed since we started detecting changes
+			# (because an item.selected model binding was updated)
+			var selection_changed := sel_idx != orig_sel_idx
+			if selection_changed:
+				if _set_model_selected_item(new_array, bt, target, sel_idx, change_log):
 					change_detected = true
-					change_log.append("%s: %s != %s" % [bt.full_path, model_item, item])
-				else:
-					printerr(
-						(
-							"WARNING: %s.selected_item %s: %s != %s (could not be assigned?)"
-							% [get_path(), bt.full_path, model_item, new_item]
-						)
-					)
+			elif _update_selected_item_from_model(new_array, bt, target, sel_idx, change_log):
+				change_detected = true
+
 	change_detected = change_detected || super()
 	_detected_change_log.append_array(change_log)
 	return change_detected
+
+
+# Update all item's `item_selected` bind to match our state
+func _update_selected_item_from_model(
+	new_array: Array, bt: BindTarget, target, sel_idx: int, log: Array
+) -> bool:
+	var parent := get_parent()
+	var sel_item = new_array[sel_idx] if sel_idx >= 0 else null
+	var model_item = bt.get_value(target)
+	var change_detected := false
+	if !_equal_approx(model_item, sel_item):
+		var new_idx = new_array.find(model_item)
+		if "selected" in parent:
+			parent.selected = new_idx
+		elif new_idx > -1:
+			parent.select(new_idx, true)
+		else:
+			parent.deselect_all()
+		var new_item = new_array[new_idx] if new_idx >= 0 else null
+		bt.set_value(target, new_item)
+
+		model_item = bt.get_value(target)
+		if _equal_approx(new_item, model_item):
+			change_detected = true
+			log.append("%s: %s != %s" % [bt.full_path, model_item, new_item])
+		else:
+			printerr(
+				(
+					"WARNING: %s.selected_item %s: unable to set %s => %s"
+					% [get_path(), bt.full_path, model_item, new_item]
+				)
+			)
+		if "selected" in _bound_item_props:
+			for item_idx in len(new_array):
+				if _update_item_selected(new_array, item_idx, new_idx, log):
+					change_detected = true
+	return change_detected
+
+
+func _update_item_selected(new_array: Array, item_idx, sel_idx, log):
+	var item = new_array[item_idx]
+	var sel = item_idx == sel_idx
+	var bs: BindTarget = _bound_item_props.selected
+	var item_sel = bs.get_value(item)
+	if !_equal_approx(sel, item_sel):
+		bs.set_value(item, sel)
+		item_sel = bs.get_value(item)
+		if _equal_approx(sel, item_sel):
+			log.append("item[%s].%s: %s != %s" % [item_idx, bs.full_path, sel, item_sel])
+		else:
+			printerr(
+				(
+					"WARNING: %s item selected %s[i]%s: unable to set %s => %s"
+					% [get_path(), array_bind, item_idx, bs.full_path, sel, bs.get_value(item)]
+				)
+			)
+		return true
+	return false
+
+
+# Update the `selected_item` bind to match the currently selected item from the control
+func _set_model_selected_item(
+	new_array: Array, bt: BindTarget, target, sel_idx: int, log: Array
+) -> bool:
+	var parent := get_parent()
+	var sel_item = new_array[sel_idx] if sel_idx >= 0 else null
+	var model_item = bt.get_value(target)
+	if !_equal_approx(model_item, sel_item):
+		bt.set_value(target, sel_item)
+		model_item = bt.get_value(target)
+		if _equal_approx(sel_item, model_item):
+			log.append("%s: %s != %s" % [bt.full_path, model_item, sel_item])
+			return true
+		printerr(
+			(
+				"WARNING: %s.selected_item %s: unable to set %s => %s"
+				% [get_path(), bt.full_path, model_item, sel_item]
+			)
+		)
+		return true
+	return false
 
 
 func _on_item_selected(_idx: int) -> void:
@@ -207,7 +293,7 @@ func _on_multi_selected(idx: int, _selected: bool) -> void:
 	_on_item_selected(idx)
 
 
-func _assign_item(items_target: Node, i: int, item) -> bool:
+func _update_from_item(items_target: Node, i: int, item) -> bool:
 	var change_detected := false
 	var pl = _script_property_list
 	for p in pl:
@@ -231,7 +317,10 @@ func _assign_item(items_target: Node, i: int, item) -> bool:
 				change_detected = change_detected || update
 				if update:
 					_detected_change_log.append(
-						"[%s].%s(): %s != %s" % [i, set_method_name, old_value, new_value]
+						(
+							"%s[%s].%s(): %s != %s"
+							% [_bound_array.full_path, i, get_method_name, old_value, new_value]
+						)
 					)
 			if update:
 				if set_method_name == "select":
