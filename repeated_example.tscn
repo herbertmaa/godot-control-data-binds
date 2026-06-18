@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddkq3rwuwxo1d"]
+[gd_scene format=3 uid="uid://ddkq3rwuwxo1d"]
 
 [ext_resource type="Script" uid="uid://bth6gpf3mc1s" path="res://repeated_example.gd" id="1_qsp2h"]
 [ext_resource type="Script" uid="uid://njl7labrgiya" path="res://addons/DataBindControls/binds.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://b60l5qe7oucuh" path="res://eye.svg" id="2_5lfjy"]
 
-[node name="RepeatedControl" type="Panel"]
+[node name="RepeatedControl" type="Panel" unique_id=1092369665]
 custom_minimum_size = Vector2(0, 200)
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_qsp2h")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=804035378]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,16 +24,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=6521949]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=965569372]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch_mode = 4
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/TextureRect"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/TextureRect" unique_id=1794660397]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -42,13 +41,12 @@ auto_translate_mode = ""
 script = ExtResource("2")
 texture = "item.icon"
 
-[node name="TextureRectVisibilityBound" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="TextureRectVisibilityBound" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=239893024]
 layout_mode = 2
 texture = ExtResource("2_5lfjy")
 stretch_mode = 3
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/TextureRectVisibilityBound"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/TextureRectVisibilityBound" unique_id=1807260286]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -57,15 +55,14 @@ auto_translate_mode = ""
 script = ExtResource("2")
 visible = "item.pressed"
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2020530281]
 layout_mode = 2
 text = "X"
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2023491774]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/Label"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/Label" unique_id=1282610202]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -74,11 +71,10 @@ auto_translate_mode = ""
 script = ExtResource("2")
 text = "item.text"
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer" unique_id=1245097403]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/CheckBox"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/CheckBox" unique_id=1891571133]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -87,11 +83,10 @@ auto_translate_mode = ""
 script = ExtResource("2")
 button_pressed = "item.pressed"
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1126773790]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/CheckButton"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/CheckButton" unique_id=523131088]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -100,12 +95,11 @@ auto_translate_mode = ""
 script = ExtResource("2")
 button_pressed = "item.pressed"
 
-[node name="TextEdit3" type="TextEdit" parent="VBoxContainer"]
+[node name="TextEdit3" type="TextEdit" parent="VBoxContainer" unique_id=1872932667]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/TextEdit3"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/TextEdit3" unique_id=581855547]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -114,11 +108,10 @@ auto_translate_mode = ""
 script = ExtResource("2")
 text = "item.text"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=1096826872]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/LineEdit"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/LineEdit" unique_id=362913677]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -127,7 +120,7 @@ auto_translate_mode = ""
 script = ExtResource("2")
 text = "item.text"
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer" unique_id=558232570]
 visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2

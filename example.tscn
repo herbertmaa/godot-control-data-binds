@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck6v3p607f1pn"]
+[gd_scene format=3 uid="uid://ck6v3p607f1pn"]
 
 [ext_resource type="Script" uid="uid://njl7labrgiya" path="res://addons/DataBindControls/binds.gd" id="1"]
 [ext_resource type="Script" uid="uid://brmirx5b5w7d" path="res://example.gd" id="1_so716"]
@@ -9,7 +9,7 @@
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 1)
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="Panel" unique_id=1047698734]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,27 +19,26 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_so716")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1578765911]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=143564569]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1545998755]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1857524786]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1420071503]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Label"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Label" unique_id=324123782]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -48,11 +47,10 @@ auto_translate_mode = ""
 script = ExtResource("1")
 text = "text"
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1209014981]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/CheckBox"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/CheckBox" unique_id=815376070]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -61,11 +59,10 @@ auto_translate_mode = ""
 script = ExtResource("1")
 button_pressed = "pressed"
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=459544716]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/CheckButton"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/CheckButton" unique_id=922054212]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -74,12 +71,11 @@ auto_translate_mode = ""
 script = ExtResource("1")
 button_pressed = "pressed"
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1257013016]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/TextEdit"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/TextEdit" unique_id=706825651]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -88,11 +84,10 @@ auto_translate_mode = ""
 script = ExtResource("1")
 text = "text"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1211376914]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/LineEdit"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/LineEdit" unique_id=1907789989]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -101,21 +96,20 @@ auto_translate_mode = ""
 script = ExtResource("1")
 text = "text"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=64364344]
 layout_mode = 2
 alignment = 1
 
-[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=320225647]
 layout_mode = 2
 text = "Add"
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1711292421]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/TextEdit"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer/TextEdit" unique_id=1683242646]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -124,11 +118,11 @@ auto_translate_mode = ""
 script = ExtResource("1")
 text = "model_yaml"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=301950189]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1853018497]
 layout_mode = 2
 size_flags_horizontal = 3
 select_mode = 1
@@ -136,8 +130,7 @@ auto_height = true
 item_count = 1
 item_0/text = "Item 0"
 
-[node name="BindItems" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ItemList"]
-_import_path = ""
+[node name="BindItems" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ItemList" unique_id=1996954344]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -149,33 +142,32 @@ item_text = "text"
 item_icon = "icon"
 item_selected = "pressed"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1191539732]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBCRepeat" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+[node name="VBCRepeat" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer" unique_id=1911150605]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RepeatedControl" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBCRepeat" instance=ExtResource("4")]
+[node name="RepeatedControl" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBCRepeat" unique_id=106301274 instance=ExtResource("4")]
 custom_minimum_size = Vector2(0, 145)
 layout_mode = 2
 theme_override_styles/panel = SubResource("1")
 
-[node name="BindRepeat" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBCRepeat/RepeatedControl"]
+[node name="BindRepeat" type="Node" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBCRepeat/RepeatedControl" unique_id=1120810251]
 script = ExtResource("3")
 array_bind = "filtered_array()"
 target_property = "item"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=2104298106]
 layout_mode = 2
 
-[node name="TimerLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="TimerLabel" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1723127075]
 layout_mode = 2
 
-[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer2/TimerLabel"]
-_import_path = ""
+[node name="Binds" type="Node" parent="VBoxContainer/HBoxContainer2/TimerLabel" unique_id=606782318]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -184,7 +176,7 @@ auto_translate_mode = ""
 script = ExtResource("1")
 text = "time"
 
-[node name="Timer" type="Timer" parent="VBoxContainer/HBoxContainer2"]
+[node name="Timer" type="Timer" parent="VBoxContainer/HBoxContainer2" unique_id=703284391]
 wait_time = 10.0
 autostart = true
 

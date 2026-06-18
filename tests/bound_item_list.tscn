@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://jqyichbqfmxj"]
+[gd_scene format=3 uid="uid://jqyichbqfmxj"]
 
 [ext_resource type="Script" uid="uid://bbdjbcb15oaul" path="res://tests/bound_item_list.gd" id="1_wqg02"]
 [ext_resource type="Script" uid="uid://brbpqyughndw8" path="res://addons/DataBindControls/bind_items.gd" id="2_m4ror"]
 
-[node name="BoundItemList" type="ItemList"]
+[node name="BoundItemList" type="ItemList" unique_id=128087741]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,8 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wqg02")
 
-[node name="BindItems" type="Node" parent="."]
-_import_path = ""
+[node name="BindItems" type="Node" parent="." unique_id=987231469]
 unique_name_in_owner = ""
 process_physics_priority = ""
 process_thread_group = ""
@@ -23,4 +22,3 @@ array_bind = "items"
 selected_item = "selected_item"
 item_text = "name"
 item_selected = "selected"
-metadata/_custom_type_script = ""

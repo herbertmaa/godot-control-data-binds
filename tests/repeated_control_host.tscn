@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtu0iv2dbkinx"]
+[gd_scene format=3 uid="uid://dtu0iv2dbkinx"]
 
 [ext_resource type="Script" uid="uid://dc1btd1d3asop" path="res://tests/repeated_control_host.gd" id="1_say2d"]
 [ext_resource type="Script" uid="uid://cgr5wsrfaysbi" path="res://addons/DataBindControls/bind_repeat.gd" id="3_w8au5"]
 
-[node name="RepeatedControlHost" type="Control"]
+[node name="RepeatedControlHost" type="Control" unique_id=1157334551]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,12 +12,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_say2d")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1959034793]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="BindRepeat" type="Node" parent="Label"]
+[node name="BindRepeat" type="Node" parent="Label" unique_id=1366827041]
 script = ExtResource("3_w8au5")
 array_bind = "model"
 target_property = "text"

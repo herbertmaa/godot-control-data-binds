@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmd7vewvitvxo"]
+[gd_scene format=3 uid="uid://bmd7vewvitvxo"]
 
 [ext_resource type="Script" uid="uid://c6ttc1hcy40yj" path="res://tests/benchmark.gd" id="1_tf50s"]
 [ext_resource type="PackedScene" uid="uid://s647ot4qd3vq" path="res://tests/visibility/visibility_rig.tscn" id="2_liiis"]
 
-[node name="Benchmark" type="Panel"]
+[node name="Benchmark" type="Panel" unique_id=1076598085]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,5 +11,5 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tf50s")
 
-[node name="VisibilityRig" parent="." instance=ExtResource("2_liiis")]
+[node name="VisibilityRig" parent="." unique_id=35275381 instance=ExtResource("2_liiis")]
 layout_mode = 1
