@@ -107,7 +107,7 @@ func _binds_get_property_list():
 	return result
 
 
-func _set(prop_name, value):
+func _set(prop_name, value) -> bool:
 	# if this happens at runtime we need to _bind_targets() and _unbind_targets()
 	assert(Engine.is_editor_hint() || !is_inside_tree())
 	if prop_name in PASSTHROUGH_PROPS:
@@ -119,9 +119,10 @@ func _set(prop_name, value):
 	else:
 		_binds[prop_name] = value
 		update_configuration_warnings()
+	return true
 
 
-func _get(prop_name):
+func _get(prop_name) -> Variant:
 	if prop_name in PASSTHROUGH_PROPS:
 		var method_name = ("get%s" if prop_name.begins_with("_") else "get_%s") % prop_name
 		if has_method(method_name):
