@@ -1,3 +1,4 @@
 [submodule "contrib/gut"]
 	path = contrib/gut
 	url = https://github.com/bitwes/Gut.git
+	branch = v9.6.0

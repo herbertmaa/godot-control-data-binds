@@ -28,12 +28,18 @@ jobs:
   benchmark:
     name: Performance Benchmark
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Godot 4.7
+        run: |
+          curl -sL https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_linux.x86_64.zip -o godot.zip
+          unzip -q godot.zip
+          chmod +x Godot_v4.7-stable_linux.x86_64
+          mv Godot_v4.7-stable_linux.x86_64 /usr/local/bin/godot
+          rm godot.zip
 
       - name: Godot Import
         run: godot --headless --import
@@ -46,20 +52,21 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: true
-    - run: './update_addons.sh'
+    - name: Sync Addons
+      run: './update_addons.sh'
+    - name: Set up Godot 4.7
+      run: |
+        curl -sL https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_linux.x86_64.zip -o godot.zip
+        unzip -q godot.zip
+        chmod +x Godot_v4.7-stable_linux.x86_64
+        mv Godot_v4.7-stable_linux.x86_64 /usr/local/bin/godot
+        rm godot.zip
     - name: Godot Import
       run: godot --headless --import
     - name: Gut Tests
-      uses: jamie-pate/run-gut-tests-action@v2.0.3
-      with:
-        useContainer: false
-        gutConfigPath: tests/.gutconfig.json
-
-
+      run: ./test.sh --test-only
