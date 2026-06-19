@@ -50,8 +50,8 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return result
 
 
-func _get_property_list():
-	var pl = _binds_get_property_list()
+func _get_property_list() -> Array[Dictionary]:
+	var pl: Array[Dictionary] = _binds_get_property_list()
 	return pl
 
 

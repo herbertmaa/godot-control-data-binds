@@ -28,12 +28,12 @@ var _binds := {}
 var _detected_change_log := []
 
 
-func _get_property_list():
+func _get_property_list() -> Array[Dictionary]:
 	# it seems impossible to do an inherited call of _get_property_list() directly.
 	return _binds_get_property_list()
 
 
-func _binds_get_property_list():
+func _binds_get_property_list() -> Array[Dictionary]:
 	var parent := get_parent()
 	if !parent:
 		return []
@@ -98,7 +98,7 @@ func _binds_get_property_list():
 			else:
 				dest = readwrite_priority_props if priority else readwrite_props
 			dest.append(p)
-	var result := []
+	var result: Array[Dictionary] = []
 	result.append_array(readwrite_priority_props)
 	result.append_array(readonly_priority_props)
 	result.append_array(readwrite_props)
